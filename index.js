@@ -7,9 +7,9 @@ const router = express.Router();
 
 
 const userRoutes = require('./routes/users')
-const registerRoutes=require('./routes/register')
+const registerRoutes = require('./routes/register')
 
-mongoose.connect('mongodb+srv://Medha:Medha@cluster0-adqz1.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true})
+mongoose.connect('mongodb+srv://Medha:Medha@cluster0-adqz1.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
 
 
 app.use(morgan('dev'))
@@ -25,7 +25,11 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/login.html')
 });
 
+app.get('/home', function(req, res) {
+    res.sendFile(__dirname + '/public/garden-index.html')
+});
 
-app.use('/reg',registerRoutes);
+
+app.use('/reg', registerRoutes);
 
 module.exports = app

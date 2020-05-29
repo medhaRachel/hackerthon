@@ -7,33 +7,32 @@ const Register = require('../models/userModel')
 router.use(express.static("public"));
 
 router.post('/', (req, res, next) => {
-    var name = req.body.name;
+    var email = req.body.name;
     var password = req.body.password
-    Register.findOne({ name: name, password: password }, function(err, user) {
+    Register.findOne({ email: email, password: password }, function(err, user) {
         if (err) {
             console.log('Error')
             return res.status(500).json({
-                messsage: "Wrong password or name!!"
+                messsage: "Please register!!"
             })
         }
         if (!user) {
-            return res.status(404).json({
-                messsage: "Wrong password or name!!"
-            })
+            return res.status(404).redirect('/')
         }
-        return res.redirect('garden-index.html')
+        if (user) {
+            return res.status(200).redirect('/home')
+        }
 
     })
 
 })
 
-router.get('/',function(req,res)
-{
+router.get('/', function(req, res) {
     Register.find()
-    .exec()
-    .then(books=>{
-        res.json(books).status(200);
-    })
+        .exec()
+        .then(books => {
+            res.json(books).status(200);
+        })
 })
 
 module.exports = router

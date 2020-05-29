@@ -18,14 +18,7 @@ router.post('/', (req, res, next) => {
     register.save()
         .then(result => {
             console.log(result)
-            res.status(201).json({
-                message: 'You are successfully added',
-                createdProduct: {
-                    name: result.name,
-                    email: result.email,
-                    password: result.password
-                }
-            })
+            return res.status(201).redirect('/')
         })
         .catch(err => {
             console.log(err)
