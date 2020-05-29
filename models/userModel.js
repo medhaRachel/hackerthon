@@ -1,11 +1,9 @@
 const mongoose = require('mongoose')
 
 const favouriteSchema = mongoose.Schema({
-    title: String,
     id: String
 })
 const wishlistSchema = mongoose.Schema({
-    title: String,
     id: String
 })
 
@@ -17,14 +15,19 @@ const userSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
-    favourite: [favouriteSchema],
-    wishlist: [wishlistSchema]
+    favourite: {
+        type: [String]
+    },
+    wishlist: {
+        type: [String]
+    }
 
 })
 

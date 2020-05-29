@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const router = express.Router();
-
+const Register = require('./models/userModel')
 
 const userRoutes = require('./routes/users')
 const registerRoutes = require('./routes/register')
@@ -28,6 +28,7 @@ app.get('/', function(req, res) {
 app.get('/home', function(req, res) {
     res.sendFile(__dirname + '/public/garden-index.html')
 });
+
 
 
 app.use('/reg', registerRoutes);

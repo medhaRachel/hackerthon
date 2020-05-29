@@ -66,7 +66,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down" id="greetings">
-                        <h3>Hello, {User}</h3>
+                        <h3>Hello, Medha and Saranyu</h3>
                         <!-- end social -->
                     </div>
                     <!-- end col -->
@@ -117,19 +117,16 @@
                     <div class="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link color-green-hover" href="garden-index.html">Home</a>
+                                <a class="nav-link color-green-hover" href="/home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-green-hover" href="garden-category.html">Favourites</a>
+                                <a class="nav-link color-green-hover" onclick="showFav()">Favourites</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-green-hover" href="garden-category.html">Wishlist</a>
+                                <a class="nav-link color-green-hover" onclick="showCart()">Books Cart</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-green-hover" href="garden-category.html">Rental History</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link color-green-hover" href="garden-contact.html">Contact</a>
+                                <a class="nav-link color-green-hover" href="/">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -199,15 +196,13 @@
                 <div class="masonry-blog clearfix">
                     <div class="left-side">
                         <div class="masonry-box post-media">
-                            <img src="images/image_141.jpeg" alt="" class="img-fluid" style="height: 410px">
+                            <img src="images/version/library_logo.png" alt="" class="img-fluid" style="width: 524px; height: 410px;">
                             <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
                                         <span class="bg-aqua"><a href="blog-category-01.html" title="">Navigate</a></span>
-                                        <h4><a href="garden-single.html" title="">Favourites</a></h4>
-                                        <small><a href="garden-single.html" title="">Updated: 
-                                            {date}
-                                        </a></small>
+                                        <h4><a href="/home" title="">Home</a></h4>
+
                                     </div>
                                     <!-- end meta -->
                                 </div>
@@ -217,15 +212,34 @@
                         </div>
                         <!-- end post-media -->
                     </div>
+
                     <div class="center-side">
+                        <div class="masonry-box post-media">
+                            <img src="images/image_141.jpeg" alt="" class="img-fluid" style="height: 410px">
+                            <div class="shadoweffect">
+                                <div class="shadow-desc">
+                                    <div class="blog-meta">
+                                        <span class="bg-aqua"><a title="">Navigate</a></span>
+                                        <h4><a title="" onclick="showFav()">Favourites</a></h4>
+
+                                    </div>
+                                    <!-- end meta -->
+                                </div>
+                                <!-- end shadow-desc -->
+                            </div>
+                            <!-- end shadow -->
+                        </div>
+                        <!-- end post-media -->
+                    </div>
+                    <div class="right-side hidden-md-down">
                         <div class="masonry-box post-media">
                             <img src="images/wishlist.jpg" alt="" class="img-fluid">
                             <div class="shadoweffect">
                                 <div class="shadow-desc">
                                     <div class="blog-meta">
-                                        <span class="bg-aqua"><a href="blog-category-01.html" title="">Navigate</a></span>
-                                        <h4><a href="garden-single.html" title="">Books Cart</a></h4>
-                                        <small><a href="garden-single.html" title="">Updated: {date}</a></small>
+                                        <span class="bg-aqua"><a  title="">Navigate</a></span>
+                                        <h4><a onclick="showCart()" title="">Books Cart</a></h4>
+
                                     </div>
                                     <!-- end meta -->
                                 </div>
@@ -236,26 +250,7 @@
                         <!-- end post-media -->
                     </div>
                     <!-- end left-side -->
-                    <div class="right-side hidden-md-down">
-                        <div class="masonry-box post-media">
-                            <img src="images/version/library_logo.png" alt="" class="img-fluid" style="width: 524px; height: 410px;">
-                            <div class="shadoweffect">
-                                <div class="shadow-desc">
-                                    <div class="blog-meta">
-                                        <span class="bg-aqua"><a href="blog-category-01.html" title="">Navigate</a></span>
-                                        <h4><a href="garden-single.html" title="">Rental History</a></h4>
-                                        <small><a href="garden-single.html" title="">Updated: 
-                                            {date}
-                                        </a></small>
-                                    </div>
-                                    <!-- end meta -->
-                                </div>
-                                <!-- end shadow-desc -->
-                            </div>
-                            <!-- end shadow -->
-                        </div>
-                        <!-- end post-media -->
-                    </div>
+
                 </div>
             </div>
         </section>

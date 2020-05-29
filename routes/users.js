@@ -12,9 +12,7 @@ router.post('/', (req, res, next) => {
     Register.findOne({ email: email, password: password }, function(err, user) {
         if (err) {
             console.log('Error')
-            return res.status(500).json({
-                messsage: "Please register!!"
-            })
+            return res.status(500).redirect('/')
         }
         if (!user) {
             return res.status(404).redirect('/')
@@ -27,12 +25,49 @@ router.post('/', (req, res, next) => {
 
 })
 
-router.get('/', function(req, res) {
-    Register.find()
-        .exec()
-        .then(books => {
-            res.json(books).status(200);
-        })
+const userid = '5ecfdb64e215d63578ae4532'
+router.use('/addFav/:bookID', function(req, res) {
+    const bookId = req.params.bookID;
+    const id = userid;
+    Register.updateOne({ _id: userid }, { $push: { favourite: bookId } }).exec()
+        .catch(err => { console.log(err) })
+})
+
+router.use('/delFav/:bookID', function(req, res) {
+    const bookId = req.params.bookID;
+    const id = userid;
+    Register.updateOne({ _id: userid }, { $pull: { favourite: bookId } }).exec()
+        .catch(err => { console.log(err) })
+})
+
+router.use('/addToCart/:bookID', function(req, res) {
+    const bookId = req.params.bookID;
+    const id = userid;
+    Register.updateOne({ _id: userid }, { $push: { wishlist: bookId } }).exec()
+        .catch(err => { console.log(err) })
+})
+
+router.use('/delFromCart/:bookID', function(req, res) {
+    const bookId = req.params.bookID;
+    const id = userid;
+    Register.updateOne({ _id: userid }, { $pull: { wishlist: bookId } }).exec()
+        .catch(err => { console.log(err) })
+})
+
+
+
+router.get('/showFav', async(req, res) => {
+    const results = await Register.find({ _id: userid }, { favourite: 1 });
+    let favObj = (results[0].favourite).toString();
+    let favlist = favObj.split(",")
+    return res.send({ arrList: favlist });
+})
+
+router.get('/showCart', async(req, res) => {
+    const results = await Register.find({ _id: userid }, { wishlist: 1 });
+    let cartObj = (results[0].wishlist).toString();
+    let cartlist = cartObj.split(",")
+    return res.send({ arrList: cartlist });
 })
 
 module.exports = router
