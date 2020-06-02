@@ -18,6 +18,7 @@ router.post('/', (req, res, next) => {
             return res.status(404).redirect('/')
         }
         if (user) {
+
             return res.status(200).redirect('/home')
         }
 
@@ -67,7 +68,7 @@ router.get('/showCart', async(req, res) => {
     const results = await Register.find({ _id: userid }, { wishlist: 1 });
     let cartObj = (results[0].wishlist).toString();
     let cartlist = cartObj.split(",")
-    return res.send({ arrList: cartlist });
+    return res.send({ arrList: cartlist, userId: userid });
 })
 
 module.exports = router

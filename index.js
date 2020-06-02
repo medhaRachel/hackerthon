@@ -8,6 +8,7 @@ const Register = require('./models/userModel')
 
 const userRoutes = require('./routes/users')
 const registerRoutes = require('./routes/register')
+const orderRoutes = require('./routes/orders')
 
 mongoose.connect('mongodb+srv://Medha:Medha@cluster0-adqz1.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
 
@@ -20,6 +21,8 @@ app.use(bodyParser.json())
 
 
 app.use('/log', userRoutes);
+app.use('/order', orderRoutes);
+app.use('/reg', registerRoutes);
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/login.html')
@@ -28,9 +31,5 @@ app.get('/', function(req, res) {
 app.get('/home', function(req, res) {
     res.sendFile(__dirname + '/public/garden-index.html')
 });
-
-
-
-app.use('/reg', registerRoutes);
 
 module.exports = app
